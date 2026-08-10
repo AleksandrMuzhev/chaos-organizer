@@ -87,21 +87,21 @@ jobs:
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@users.noreply.github.com'
 
-  deploy-server:
-    needs: build-and-test
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-    
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Deploy to Heroku
-      uses: akhileshns/heroku-deploy@v3.13.15
-      with:
-        heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-        heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-        heroku_email: ${{ secrets.HEROKU_EMAIL }}
-        appdir: server
-        usedocker: false
-        delay: 10
-        rollbackonerror: true
+deploy-server:
+  needs: build-and-test
+  runs-on: ubuntu-latest
+  if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+  
+  steps:
+  - uses: actions/checkout@v4
+  
+  - name: Deploy to Heroku
+    uses: akhileshns/heroku-deploy@v3.13.15
+    with:
+      heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+      heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+      heroku_email: ${{ secrets.HEROKU_EMAIL }}
+      appdir: server
+      usedocker: false
+      delay: 10
+      healthcheck: false
