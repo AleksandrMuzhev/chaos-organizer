@@ -1,4 +1,10 @@
 {
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true,
+        "jest": true
+    },
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended"
@@ -12,11 +18,25 @@
     },
     "rules": {
         "react/prop-types": "off",
-        "no-unused-vars": "warn"
+        "react/react-in-jsx-scope": "off",
+        "no-unused-vars": "warn",
+        "no-console": "off"
     },
     "settings": {
         "react": {
             "version": "detect"
         }
+    },
+    "globals": {
+        "fetch": "readonly",
+        "FormData": "readonly",
+        "WebSocket": "readonly",
+        "File": "readonly",
+        "Blob": "readonly",
+        "console": "readonly",
+        "document": "readonly",
+        "window": "readonly",
+        "localStorage": "readonly",
+        "sessionStorage": "readonly"
     }
 }
