@@ -1,0 +1,40 @@
+.pinned-message {
+    background: #fff3cd;
+    border-bottom: 2px solid #ffc107;
+    padding: 10px 20px;
+    flex-shrink: 0;
+}
+
+.pinned-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pin-icon {
+    font-size: 16px;
+}
+
+.pinned-text {
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.unpin-button {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0 8px;
+    transition: all 0.2s;
+}
+
+.unpin-button:hover {
+    color: #333;
+    transform: scale(1.1);
+}

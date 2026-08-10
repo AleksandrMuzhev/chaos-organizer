@@ -1,0 +1,26 @@
+{
+    "name": "chaos-organizer-server",
+    "version": "1.0.0",
+    "description": "Server for Chaos Organizer",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "node src/index.js",
+        "dev": "nodemon src/index.js",
+        "lint": "eslint src/**/*.js",
+        "lint:fix": "eslint src/**/*.js --fix"
+    },
+    "dependencies": {
+        "@koa/cors": "^5.0.0",
+        "@koa/multer": "^3.0.0",
+        "@koa/router": "^12.0.0",
+        "koa": "^2.14.2",
+        "koa-bodyparser": "^4.4.1",
+        "koa-static": "^5.0.0",
+        "uuid": "^9.0.1",
+        "ws": "^8.14.2"
+    },
+    "devDependencies": {
+        "eslint": "^8.55.0",
+        "nodemon": "^3.0.2"
+    }
+}
