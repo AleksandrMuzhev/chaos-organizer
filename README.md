@@ -3,7 +3,6 @@
 [![CI/CD](https://github.com/AleksandrMuzhev/chaos-organizer/actions/workflows/ci.yml/badge.svg)](https://github.com/AleksandrMuzhev/chaos-organizer/actions/workflows/ci.yml)
 [![Code Quality](https://github.com/AleksandrMuzhev/chaos-organizer/actions/workflows/code-quality.yml/badge.svg)](https://github.com/AleksandrMuzhev/chaos-organizer/actions/workflows/code-quality.yml)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Deployed-brightgreen)](https://AleksandrMuzhev.github.io/chaos-organizer/)
-[![Heroku](https://heroku-badge.herokuapp.com/?app=chaos-organizer)](https://chaos-organizer.herokuapp.com)
 
 ## О проекте
 
@@ -43,7 +42,6 @@
 ### DevOps & CI/CD
 - **GitHub Actions** - Автоматическая сборка и деплой
 - **GitHub Pages** - Хостинг фронтенда
-- **Heroku** - Хостинг бэкенда
 - **ESLint** - Проверка качества кода
 
 ## Установка и запуск
@@ -227,25 +225,6 @@ npm test
 1. Убедитесь, что в репозитории включены GitHub Pages
 2. Настройте ветку `gh-pages` как источник
 
-### Heroku (Backend)
-
-1. Создайте приложение на Heroku:
-```bash
-heroku create chaos-organizer
-```
-
-2. Настройте переменные окружения:
-```bash
-heroku config:set NODE_ENV=production
-```
-
-3. Добавьте секреты в GitHub:
-- `HEROKU_API_KEY`
-- `HEROKU_APP_NAME`
-- `HEROKU_EMAIL`
-
 ## Мониторинг
 
 - **GitHub Actions**: Статус сборки и тестов
-- **Heroku Logs**: `heroku logs --tail`
-- **Performance**: Используйте Heroku Metrics
