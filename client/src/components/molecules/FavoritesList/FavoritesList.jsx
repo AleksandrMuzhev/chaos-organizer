@@ -1,4 +1,5 @@
 import React from 'react';
+import './FavoritesList.css';
 
 const FavoritesList = ({ favorites, onSelectMessage }) => {
     if (favorites.length === 0) {

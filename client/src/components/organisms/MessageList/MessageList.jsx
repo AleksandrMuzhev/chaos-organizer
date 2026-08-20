@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import Message from './Message';
+import MessageItem from '../../molecules/MessageItem/MessageItem';
 import './MessageList.css';
 
 const MessageList = ({
@@ -45,7 +45,7 @@ const MessageList = ({
         >
             {loading && <div className="loading-indicator">Загрузка...</div>}
             {messages.map((message, index) => (
-                <Message
+                <MessageItem
                     key={message.id || index}
                     message={message}
                     isFavorite={isFavorite(message.id)}

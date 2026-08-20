@@ -1,6 +1,10 @@
 import React from 'react';
+import Button from '../../atoms/Button/Button';
+import './PinnedMessage.css';
 
 const PinnedMessage = ({ message, onUnpin }) => {
+    if (!message) return null;
+
     return (
         <div className="pinned-message">
             <div className="pinned-content">
@@ -8,7 +12,9 @@ const PinnedMessage = ({ message, onUnpin }) => {
                 <span className="pinned-text">
                     {message.type === 'text' ? message.content : '📎 Файл'}
                 </span>
-                <button onClick={onUnpin} className="unpin-button">✕</button>
+                <Button variant="ghost" onClick={onUnpin} title="Открепить">
+                    ✕
+                </Button>
             </div>
         </div>
     );

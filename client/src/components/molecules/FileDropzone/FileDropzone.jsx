@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import './FileUpload.css';
+import './FileDropzone.css';
 
-const FileUpload = ({ onFileUpload }) => {
+const FileDropzone = ({ onFileUpload }) => {
     const onDrop = useCallback((acceptedFiles) => {
         acceptedFiles.forEach(file => {
             onFileUpload(file);
@@ -15,17 +15,17 @@ const FileUpload = ({ onFileUpload }) => {
     });
 
     return (
-        <div className="file-upload" {...getRootProps()}>
+        <div className="file-dropzone" {...getRootProps()}>
             <input {...getInputProps()} />
             <div className={`drop-zone ${isDragActive ? 'active' : ''}`}>
                 {isDragActive ? (
                     <p>Отпустите файлы здесь...</p>
                 ) : (
-                    <p>📎 Перетащите файлы или кликните</p>
+                    <p>📎 Перетащите или кликните</p>
                 )}
             </div>
         </div>
     );
 };
 
-export default FileUpload;
+export default FileDropzone;

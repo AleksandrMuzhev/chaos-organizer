@@ -1,4 +1,22 @@
-const API_BASE = 'http://localhost:3000/api';
+// Определяем базовый URL в зависимости от окружения
+const getBaseUrl = () => {
+    // Если мы на localhost (проверяем по хосту)
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return 'http://localhost:3000/api';
+    }
+    // В продакшене (GitHub Pages) используем Railway
+    return 'https://loving-comfort-production-ee82.up.railway.app/api';
+};
+
+// Определяем WebSocket URL
+const getWsUrl = () => {
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return 'ws://localhost:8081';
+    }
+    return 'wss://loving-comfort-production-ee82.up.railway.app';
+};
+
+const API_BASE = getBaseUrl();
 
 export const api = {
     async getMessages(limit = 10, offset = 0) {
@@ -102,6 +120,6 @@ export const api = {
 
 export const ws = {
     connect() {
-        return new WebSocket('ws://localhost:8081');
+        return new WebSocket(getWsUrl());
     }
 };

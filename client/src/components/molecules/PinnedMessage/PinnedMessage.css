@@ -23,18 +23,3 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
-.unpin-button {
-    background: none;
-    border: none;
-    color: #999;
-    cursor: pointer;
-    font-size: 18px;
-    padding: 0 8px;
-    transition: all 0.2s;
-}
-
-.unpin-button:hover {
-    color: #333;
-    transform: scale(1.1);
-}

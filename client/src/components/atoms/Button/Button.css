@@ -1,0 +1,37 @@
+.btn {
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background: #2c3e50;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.btn-primary:hover {
+    background: #1a2632;
+    transform: scale(1.05);
+}
+
+.btn-primary:active {
+    transform: scale(0.95);
+}
+
+.btn-ghost {
+    background: transparent;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.btn-ghost:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

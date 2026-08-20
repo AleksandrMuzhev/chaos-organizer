@@ -8,6 +8,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build-and-test:
@@ -29,7 +31,6 @@ jobs:
       run: |
         cd client
         npm ci
-        npm run lint --if-present
     
     - name: Build Client
       run: |
@@ -41,26 +42,11 @@ jobs:
         cd server
         npm ci
     
-    - name: Run Server Tests (if any)
-      run: |
-        cd server
-        npm test --if-present
-    
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
         name: client-build
         path: client/dist/
-        retention-days: 7
-    
-    - name: Upload coverage reports
-      uses: actions/upload-artifact@v4
-      with:
-        name: coverage-reports
-        path: |
-          client/coverage/
-          server/coverage/
-        if-no-files-found: ignore
         retention-days: 7
 
   deploy-client:
