@@ -21,7 +21,9 @@ const App = () => {
         sendFile
     } = useMessages();
 
-    // WebSocket обработка
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+    // WebSocket обработка (только для localhost)
     useWebSocket((data) => {
         switch (data.type) {
             case 'new_message':
@@ -37,6 +39,26 @@ const App = () => {
                 break;
         }
     });
+
+    // Polling для продакшена (обновление каждые 5 секунд)
+    useEffect(() => {
+        if (isLocal) return;
+
+        const interval = setInterval(() => {
+            loadMessages();
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const loadMessages = async () => {
+        try {
+            const result = await api.getMessages(10, 0);
+            setMessages(result.messages.reverse());
+        } catch (error) {
+            console.error('Failed to load messages:', error);
+        }
+    };
 
     useEffect(() => {
         loadPinnedMessage();
@@ -64,6 +86,9 @@ const App = () => {
     const handlePinMessage = async (messageId) => {
         try {
             await api.pinMessage(messageId);
+            if (!isLocal) {
+                await loadMessages();
+            }
         } catch (error) {
             console.error('Failed to pin message:', error);
         }
@@ -72,6 +97,9 @@ const App = () => {
     const handleUnpinMessage = async () => {
         try {
             await api.unpinMessage();
+            if (!isLocal) {
+                await loadMessages();
+            }
         } catch (error) {
             console.error('Failed to unpin message:', error);
         }
@@ -85,6 +113,9 @@ const App = () => {
             } else {
                 await api.addFavorite(messageId);
             }
+            if (!isLocal) {
+                await loadMessages();
+            }
         } catch (error) {
             console.error('Failed to toggle favorite:', error);
         }
@@ -92,8 +123,7 @@ const App = () => {
 
     const handleSearch = async (query) => {
         if (!query.trim()) {
-            // Перезагружаем сообщения
-            window.location.reload();
+            await loadMessages();
             return;
         }
         try {
@@ -107,6 +137,9 @@ const App = () => {
     const handleBotCommand = async (command) => {
         try {
             await api.sendBotCommand(command);
+            if (!isLocal) {
+                await loadMessages();
+            }
         } catch (error) {
             console.error('Failed to send bot command:', error);
         }
