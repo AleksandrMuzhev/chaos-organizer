@@ -15,8 +15,7 @@ const router = new Router();
 app.use(cors({
     origin: '*',
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
-    credentials: true
+    allowHeaders: ['Content-Type', 'Authorization', 'Accept']
 }));
 
 // Настройка хранения файлов
